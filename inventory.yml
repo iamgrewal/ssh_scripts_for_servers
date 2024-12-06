@@ -1,0 +1,71 @@
+# SSH User Configuration
+ssh_user: root
+ssh_port: 22
+
+# Default Domain Settings
+default_domain1: domain1.example.com
+default_domain2: domain2.example.com
+
+# Server Inventory
+servers:
+  MY_SERVER1:
+    ip: 10.10.10.121
+    local_ip: 172.122.22.121
+    aliases:
+      - my_server1.domain1.example.com
+      - my_server1.domain2.example.com
+  MY_SERVER2:
+    ip: 10.10.10.122
+    local_ip: 172.122.22.122
+    aliases:
+      - my_server2.domain1.example.com
+      - my_server2.domain2.example.com
+
+# Git Configuration
+git_servers:
+  github:
+    hostname: github.com
+    user: git
+  gitlab:
+    hostname: gitlab.com
+    user: git
+
+## 🔐 Security Recommendations
+
+- Always use strong SSH keys (minimum 4096 bits)
+- Regularly rotate SSH keys
+- Keep private keys secure and never share them
+- Use different keys for different purposes (e.g., separate Git keys)
+- Regularly audit authorized_keys files
+- Implement proper file permissions:
+  - |
+    ```bash
+    chmod 700 ~/.ssh
+    chmod 600 ~/.ssh/config
+    chmod 600 ~/.ssh/authorized_keys
+    chmod 600 ~/.ssh/id_rsa
+    chmod 644 ~/.ssh/id_rsa.pub
+    ```
+
+## 🐛 Troubleshooting
+
+Common issues and solutions:
+
+1. SSH Connection Failed
+   - Check if the server is reachable (ping)
+   - Verify SSH service is running
+   - Confirm key permissions
+   - Check authorized_keys file
+
+2. Git Authentication Issues
+   - Verify Git SSH key is loaded
+   - Test connection: `ssh -T git@github.com`
+   - Check Git configuration
+
+## 📝 License
+
+[Add your license information here]
+
+## 🤝 Contributing
+
+[Add contribution guidelines here]
